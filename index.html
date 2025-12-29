@@ -18,9 +18,12 @@
 
     *{ margin:0; padding:0; box-sizing:border-box; }
 
+    /* ✅ SCROLL habilitado */
     body{
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       background:
         radial-gradient(1200px 800px at 50% -10%, rgba(212,175,55,0.18), transparent 60%),
         radial-gradient(900px 700px at 10% 20%, rgba(0,255,255,0.08), transparent 55%),
@@ -119,12 +122,12 @@
     @keyframes shimmer{ 0%{ background-position: 200% 0; } 100%{ background-position: -200% 0; } }
     .loading-percentage{ margin-top: 10px; font-weight: 800; color: rgba(255,255,255,0.9); }
 
-    /* App layout */
+    /* ✅ App layout con scroll */
     .app{
       position: relative;
       width: 100vw;
-      height: 100vh;
-      height: 100dvh;
+      min-height: 100vh;
+      min-height: 100dvh;
       display:flex;
       flex-direction:column;
       z-index: 1;
@@ -159,16 +162,15 @@
       filter: drop-shadow(0 0 14px rgba(212,175,55,0.28)) drop-shadow(0 10px 30px rgba(0,0,0,.35));
     }
 
-    /* Main column */
+    /* ✅ Main column: no fuerces altura fija, dejá crecer para scrollear */
     .main{
-      flex:1 1 auto;
-      min-height: 0;
+      flex: 0 0 auto;
       display:flex;
       flex-direction:column;
       align-items:center;
       justify-content:flex-start;
       gap: 10px;
-      padding: 8px 12px 14px;
+      padding: 8px 12px calc(14px + env(safe-area-inset-bottom));
     }
 
     .board-shell{
@@ -190,11 +192,13 @@
       position:relative;
       isolation:isolate;
     }
+
+    /* ✅ permitir scroll vertical en móvil sin pelearse con el canvas */
     #canvas-container canvas{
       display:block;
       width:100% !important;
       height:100% !important;
-      touch-action: manipulation;
+      touch-action: pan-y;
     }
 
     .bottom-panel{
