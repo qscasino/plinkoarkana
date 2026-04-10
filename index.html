@@ -429,7 +429,7 @@
   <div class="modal-overlay" id="modalOverlay">
     <div class="prize-display">
       <div class="prize-text" id="prizeText"></div>
-      <div class="prize-sub" id="prizeSub">Cerrá el año con buena suerte y disfrutá tu premio. Guardalo o sacá captura.</div>
+      <div class="prize-sub" id="prizeSub">Excelente premio. Guardalo o sacá captura.</div>
       <button class="play-again-button" id="closeButton">CERRAR</button>
     </div>
   </div>
@@ -1076,12 +1076,12 @@
 
     function showPrizeModal(prizeName, isStored) {
       document.getElementById('prizeText').textContent =
-        (isStored ? '🎯 Tu premio de hoy 🎯\n' : '🎉 Cerrá el año con premio 🎉\n') + prizeName;
+        (isStored ? '🎯 Tu premio de hoy 🎯\n' : '🎉 Felicitaciones 🎉\n') + prizeName;
 
       document.getElementById('prizeSub').textContent =
         isStored
           ? 'Si recargaste la página, acá lo tenés de nuevo para sacar captura.'
-          : 'Se viene Año Nuevo: disfrutá tu bonus. Guardalo o sacá captura para no olvidarte.';
+          : 'Aprovecha y disfrutá tu bonus. Guardalo o sacá captura para no olvidarte.';
 
       document.getElementById('modalOverlay').classList.add('show');
     }
